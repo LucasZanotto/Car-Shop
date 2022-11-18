@@ -28,6 +28,12 @@ export default class CarService {
     const cars = await carODM.findByCar(id);
     return cars;
   }
+
+  public async updateByCar(id: string, car: ICar) {
+    const carODM = new CarModel();
+    const cars = await carODM.updateByCar(id, car);
+    return cars;
+  }
 }
 
 // {

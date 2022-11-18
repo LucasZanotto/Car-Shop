@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import CarController from '../Controllers/CarController';
+// import fieldMiddle from '../Middlewares/fieldMiddle';
 
 const routes = Router();
 
@@ -14,8 +15,13 @@ routes.get(
 );
 
 routes.get(
-  '/cars/:id',
+  '/cars/:id', 
   (req, res, next) => new CarController(req, res, next).findByCar(),
+);
+
+routes.put(
+  '/cars/:id', 
+  (req, res, next) => new CarController(req, res, next).updateByCar(),
 );
 
 export default routes;
