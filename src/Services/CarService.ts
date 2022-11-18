@@ -26,13 +26,13 @@ export default class CarService {
   public async getByCar(id: string) {
     const carODM = new CarModel();
     const cars = await carODM.findByCar(id);
-    return cars;
+    return this.createCar(cars);
   }
 
   public async updateByCar(id: string, car: ICar) {
     const carODM = new CarModel();
     const cars = await carODM.updateByCar(id, car);
-    return cars;
+    return this.createCar(cars);
   }
 }
 

@@ -41,13 +41,13 @@ export default class CarController {
 
   public async findByCar() {
     const { id } = this.req.params;
+    if (!isValidObjectId(id)) {
+      return this.res.status(422).json({ message: 'Invalid mongo id' });
+    }
     const cars = await this.service.getByCar(id as string);
     try {
       if (!cars) {
         return this.res.status(404).json({ message: 'Car not found' });
-      }
-      if (!isValidObjectId(id)) {
-        return this.res.status(402).json({ message: 'Invalid mongo id' });
       }
       return this.res.status(200).json(cars);
     } catch (error) {
@@ -58,13 +58,13 @@ export default class CarController {
   public async updateByCar() {
     const { id } = this.req.params;
     const car = this.req.body;
+    if (!isValidObjectId(id)) {
+      return this.res.status(422).json({ message: 'Invalid mongo id' });
+    }
     try {
       const cars = await this.service.updateByCar(id, car);
       if (!cars) {
         return this.res.status(404).json({ message: 'Car not found' });
-      }
-      if (!isValidObjectId(id)) {
-        return this.res.status(422).json({ message: 'Invalid mongo id' });
       }
       return this.res.status(200).json(cars);
     } catch (error) {

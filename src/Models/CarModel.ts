@@ -14,8 +14,10 @@ export default class Car {
       buyValue: { type: Number, required: true },
       doorsQty: { type: Number, required: true },
       seatsQty: { type: Number, required: true },
+    }, { collection: 'Car',
+      versionKey: false, // here
     });
-    this.model = models.cars || model('cars', this.schema);
+    this.model = models.Car || model('Car', this.schema);
   }
 
   public async create(car: ICar): Promise<ICar> {
@@ -27,10 +29,14 @@ export default class Car {
   }
 
   public async findByCar(_id: string): Promise<ICar | null> {
-    return this.model.findOne({ _id });
+    return this.model.findOne({ _id }, { __v: false });
   }
 
   public async updateByCar(_id: string, car: ICar): Promise<ICar | null> {
-    return this.model.findByIdAndUpdate({ _id }, { car }, { new: true });
+    return this.model.findByIdAndUpdate(
+      { _id },
+      { ...car },
+      { new: true },
+    );
   }
 }

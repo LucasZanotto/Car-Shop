@@ -1,29 +1,29 @@
-import ICar from '../Interfaces/ICar';
+import IMotorcyle from '../Interfaces/IMotorcycle';
 // import Vehicle from './Vehicle';
 
-export default class Car {
+export default class Motorcycle {
   protected id: string | undefined;
   protected model: string;
   protected year: number;
   protected color: string;
   protected status: boolean;
   protected buyValue: number;
-  private doorsQty: number;
-  private seatsQty: number;
+  private category: string;
+  private engineCapacity: number;
 
-  constructor(car : ICar) {
-    this.id = car.id;
-    this.model = car.model;
-    this.year = car.year;
-    this.color = car.color;
-    if (car.status) { 
-      this.status = car.status; 
+  constructor(motorcyle : IMotorcyle) {
+    this.id = motorcyle.id;
+    this.model = motorcyle.model;
+    this.year = motorcyle.year;
+    this.color = motorcyle.color;
+    if (motorcyle.status) { 
+      this.status = motorcyle.status; 
     } else {
       this.status = false;
     }
-    this.buyValue = car.buyValue;
-    this.doorsQty = car.doorsQty;
-    this.seatsQty = car.seatsQty;
+    this.buyValue = motorcyle.buyValue;
+    this.category = motorcyle.category;
+    this.engineCapacity = motorcyle.engineCapacity;
   }
 
   public getId(): string | undefined {
@@ -68,17 +68,17 @@ export default class Car {
     this.buyValue = value;
   }
 
-  public getDoorsQty(): number {
-    return this.doorsQty;
+  public getCategory(): string {
+    return this.category;
   }
-  public setDoorsQty(value: number) {
-    this.doorsQty = value;
+  public setCategory(value: string) {
+    this.category = value;
   }
 
-  public getSeatsQty(): number {
-    return this.seatsQty;
+  public getEngineCapacity(): number {
+    return this.engineCapacity;
   }
-  public setSeatsQty(value: number) {
-    this.seatsQty = value;
+  public setEngineCapacity(value: number) {
+    this.engineCapacity = value;
   }
 }

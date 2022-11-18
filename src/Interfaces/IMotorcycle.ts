@@ -1,12 +1,12 @@
 // import IVehicle from "./IVehicle";
 
-export default interface ICar {
+export default interface IMotorcycle {
   id?: string;
   model: string;
   year: number;
   color: string;
   status?: boolean;
   buyValue: number;
-  doorsQty: number;
-  seatsQty: number;
+  category: string;
+  engineCapacity: number;
 }
