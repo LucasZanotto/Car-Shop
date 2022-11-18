@@ -7,6 +7,6 @@ export default interface IMotorcycle {
   color: string;
   status?: boolean;
   buyValue: number;
-  category: string;
+  category: 'Street' | 'Custom' | 'Trail';
   engineCapacity: number;
 }

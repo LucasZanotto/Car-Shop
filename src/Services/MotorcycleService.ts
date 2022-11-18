@@ -18,7 +18,7 @@ export default class MotorcyleService {
 
   public async getAllMotorcycle() {
     const motorcycleODM = new MotorcycleModel();
-    const motorcycles = await motorcycleODM.findMotorcycle();
+    const motorcycles = await motorcycleODM.find();
     const motorcyclesArray = motorcycles
       .map((motorcycle: IMotorcycle) => this.createMotorcycle(motorcycle));
     return motorcyclesArray;
@@ -26,13 +26,13 @@ export default class MotorcyleService {
 
   public async findByMotorcycle(id: string) {
     const motorcycleODM = new MotorcycleModel();
-    const motorcycles = await motorcycleODM.findByMotorcycle(id);
+    const motorcycles = await motorcycleODM.findById(id);
     return this.createMotorcycle(motorcycles);
   }
 
   public async updateByMotorcycle(id: string, motorcycle: IMotorcycle) {
     const motorcycleODM = new MotorcycleModel();
-    const motorcycles = await motorcycleODM.updateByMotorcycle(id, motorcycle);
+    const motorcycles = await motorcycleODM.updateById(id, motorcycle);
     return this.createMotorcycle(motorcycles);
   }
 }

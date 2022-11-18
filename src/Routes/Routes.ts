@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import CarController from '../Controllers/CarController';
 import MotorcycleController from '../Controllers/MotorcycleController';
-// import fieldMiddle from '../Middlewares/fieldMiddle';
 
 const routes = Router();
 

@@ -18,20 +18,20 @@ export default class CarService {
 
   public async getAllCars() {
     const carODM = new CarModel();
-    const cars = await carODM.findCar();
+    const cars = await carODM.find();
     const carsArray = cars.map((car: ICar) => this.createCar(car));
     return carsArray;
   }
 
   public async getByCar(id: string) {
     const carODM = new CarModel();
-    const cars = await carODM.findByCar(id);
+    const cars = await carODM.findById(id);
     return this.createCar(cars);
   }
 
   public async updateByCar(id: string, car: ICar) {
     const carODM = new CarModel();
-    const cars = await carODM.updateByCar(id, car);
+    const cars = await carODM.updateById(id, car);
     return this.createCar(cars);
   }
 }
