@@ -38,7 +38,7 @@ export default class MotorcycleModel {
   ): Promise<IMotorcycle | null> {
     return this.model.findByIdAndUpdate(
       { _id },
-      { motorcycle },
+      { ...motorcycle },
       { new: true },
     );
   }
